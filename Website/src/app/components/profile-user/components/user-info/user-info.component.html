@@ -1,0 +1,60 @@
+<div class="userInfo">
+    <div class="title">
+        <h2>Hồ Sơ Của Tôi</h2>
+        <span>Quản lý thông tin hồ sơ để bảo mật tài khoản</span>
+    </div>
+    <div class="formEditInfo">
+        <form action="" method="post">
+            <!-- Hình đại diện -->
+            <div class="avatar">
+                <img id="avatarInfoID" src="https://wolftechecommerce.web.app/resource/img/h%C3%ACnh%203x4.png" alt="">
+                <input class="btnChooseImage" placeholder="" type="file" multiple="none" name="" id="btnChooseImageID" value="" autocomplete="off" (change)="handleProfileCoverImageUpdate()">
+            </div>
+            <div class="inputWrapper">
+                <!-- Tên đăng nhập -->
+                <span>Tên đăng nhập</span>
+                <!-- Mặc định value là tên đăng nhập của User đó -->
+                <input type="text" placeholder="minhngo" value="minhngo" name="" id="">
+            </div>
+            <div class="inputWrapper">
+                <!-- Tên -->
+                <span>Tên</span>
+                <!-- Mặc định value là họ tên của User đó -->
+                <input type="text" placeholder="Ngo Van Minh" value="Ngo Van Minh" name="" id="">
+            </div>
+            <div class="inputWrapper">
+                <!-- Email -->
+                <span>Email</span>
+                <!-- Mặc định value là email của User đó -->
+                <input type="email" placeholder="minhngo@gmail.com" value="minhngo@gmail.com" name="" id="">
+            </div>
+            <div class="inputWrapper">
+                <!-- Số điện thoại -->
+                <span>Số điện thoại</span>
+                <input type="tel" maxlength="10" name="" id="" value="0368519917" placeholder="0368519917">
+            </div>
+            <div class="inputWrapper">
+                <!-- Giới tính -->
+                <span>Giới tính</span>
+                <div class="genderChoice">
+                    <div class="male" style="padding-left: 0px;">
+                        <input type="radio"><span>Nam</span>
+                    </div>
+                    <div class="female">
+                        <input type="radio"><span>Nữ</span>
+                    </div>
+                    <div class="other">
+                        <input type="radio"><span>Khác</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inputWrapper">
+                <!-- Ngày sinh -->
+                <span>Ngày sinh</span>
+                <input type="date" name="" id="" >
+            </div>
+            <!-- Lưu -->
+            <button type="submit" class="btnSave">Lưu</button>
+        </form>
+    </div>
+</div>

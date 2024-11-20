@@ -1,0 +1,141 @@
+<!-- Phần danh sách sản phẩm -->
+<div class="row productListContainer">
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-12 productListMain">
+        <div id="leftOfProductListID" class="leftOfProductList">
+            <!-- Nút đóng bộ lọc sản phẩm (trên điện thoại) -->
+            <div class="btnCloseFilterProductList">
+                <button (click)="closeFilterProductList()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="titleFilterProductList">
+                <span><i class="fa-solid fa-filter"></i> BỘ LỌC TÌM KIẾM</span>
+            </div>
+            <div class="filterBasePlace">
+                <div class="filterBasePlaceCheckbox">Nơi bán</div>
+                <div class="filterBasePlaceCheckbox"><input type="checkbox"> TP. Hồ Chí Minh</div>
+                <div class="filterBasePlaceCheckbox"><input type="checkbox"> Hà Nội</div>
+                <div class="filterBasePlaceCheckbox"><input type="checkbox"> Đà Nẵng</div>
+                <div class="filterBasePlaceCheckbox"><input type="checkbox"> Đồng Nai</div>
+                <div class="filterBasePlaceCheckbox"><input type="checkbox"> Bình Dương</div>
+                <div class="filterBasePlaceCheckbox"><input type="checkbox"> Bà Rịa - Vùng Tàu</div>
+            </div>
+            <div class="filterBaseBrand">
+                <div class="filterBaseBrandCheckbox">Thương Hiệu</div>
+                <div class="filterBaseBrandCheckbox"><input type="checkbox"> Philips</div>
+                <div class="filterBaseBrandCheckbox"><input type="checkbox"> Panasonic</div>
+                <div class="filterBaseBrandCheckbox"><input type="checkbox"> Xiaomi</div>
+                <div class="filterBaseBrandCheckbox"><input type="checkbox"> SUNHOUSE</div>
+                <div class="filterBaseBrandCheckbox"><input type="checkbox"> Bosch</div>
+            </div>
+            <div class="filterBaseRating">
+                <div class="">Đánh Giá</div>
+                <!-- 5 sao -->
+                <button class="filterBaseRatingChoice">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </button>
+                <!-- 4 sao -->
+                <button class="filterBaseRatingChoice">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                </button>
+                <!-- 3 sao -->
+                <button class="filterBaseRatingChoice">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </button>
+                <!-- 2 sao -->
+                <button class="filterBaseRatingChoice">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </button>
+            </div>
+            <div class="filterBaseCategory">
+                <!-- Danh mục -->
+            </div>
+            <div class="btnActiveFilter">
+                <button>
+                    ÁP DỤNG
+                </button>
+            </div>
+        </div>
+        <div class="rightOfProductList">
+            <!-- Nút mở Bộ lọc sản phẩm trên điện thoại -->
+            <div class="btnOpenFilterProductList">
+                <button (click)="openFilterProductList()"><span><i class="fa-solid fa-filter"></i> BỘ LỌC TÌM KIẾM</span></button>
+            </div>
+            <!-- Lọc theo giá -->
+            <div class="filterByPrice">
+                <span>Sắp xếp theo</span>
+                <select name="sortBy" id="" (change)="productByCondition(page,sortBy.value,$event)" #sortBy>
+                    <option value="">Mặc định</option>
+                    <option value="price_asc">Giá tăng dần</option>
+                    <option value="price_desc">Giá giảm dần</option>
+                    <option value="time_desc">Mới nhất</option>
+                    <option value="sales">Lượt mua</option>
+                </select>
+            </div>
+            <!-- List sản phẩm -->
+            <div class="row listSuggest">
+                <ng-container *ngIf="list_product.length > 0">
+                    <div class="col l-3 m-3 c-6 btnSuggestItemContainer" *ngFor="let product of list_product">
+                        <button routerLink="/product-detail/{{product.product_name}}"
+                        [queryParams]="{
+                            idProduct : product._id
+                        }"
+                         class="btnSuggestItem">
+                            <div class="suggestItemSaleTag">
+                                -50%
+                            </div>
+                            <img [src]="baseUrl + product.product_imgs[0].alt" alt="">
+                            <span class="productName">{{ product.product_name }}</span>
+                            <div class="suggestItemPriceSale">
+                                <span class="suggestItemPrice">{{product.product_supp_price | number : '1.0-0' }} đ</span>
+                            </div>
+                            <div class="ratingOfProduct">
+                                <div class="starRatingOfProductBox">
+                                    <div class="starRatingOfProduct">
+                                        <span class="fa fa-star checked"></span>
+                                    </div>
+                                    <span style="
+                                        font-weight: 300;
+                                        color: black;
+                                        font-size: 12px;
+                                        padding: 0px;
+                                        margin-left: 5px;
+                                        margin-top: 2px;"
+                                    >
+                                        {{product.product_avg_rating}}
+                                    </span>
+                                </div>
+                                <span class="suggestItemSold">Đã bán {{product.product_sold_quantity}}</span>
+                            </div>
+                        </button>
+                    </div>
+                </ng-container>
+            </div>
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="">&laquo;</button>
+                <button class="active">1</button>
+                <button class="">2</button>
+                <button class="">3</button>
+                <button class="">4</button>
+                <button class="">5</button>
+                <button class="">6</button>
+                <button class="">&raquo;</button>
+            </div>
+        </div>
+    </div>
+</div>

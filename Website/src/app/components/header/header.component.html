@@ -1,0 +1,92 @@
+<div id="headerID" class="row header">
+    <div class="col l-10 l-o-1 m-10 m-o-1 c-10 c-o-1">
+        <div class="topOfHeaderContainer">
+            <div class="left">
+                <a href="#" style="padding-left: 0px;">
+                    Kênh người bán
+                </a>
+                <a href="#" >
+                    Trở thành người bán WolfTechE
+                </a>
+                <a href="#" >
+                    Tải ứng dụng
+                </a>
+                <a href="#" style="border-right: none;">
+                    Kết nối <i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-instagram" style="margin-left: 5px;"></i>
+                </a>
+            </div>
+            <div class="right">
+                <a href="#">
+                    <i class="fa-solid fa-phone"></i> Hỗ trợ
+                </a>
+                <a href="#" routerLink="sign-up">
+                     Đăng ký
+                </a>
+                <a href="#" routerLink="sign-in">
+                     Đăng nhập
+                </a>
+            </div>
+        </div>
+        <div class="bottomOfHeaderContainer">
+            <div class="logo">
+                <img routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" src="resource/img/logo-no-background.png" alt="">
+            </div>
+            <div class="search">
+                <form action="">
+                    <input type="text" name="search_query" placeholder="Tìm kiếm ..." #search_query>
+                    <button class="btnFindInSearch" type="button" (click)="searching(search_query.value)">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div class="topSearchList">
+                    <a href="#">
+                        Hoa hồng
+                    </a>
+                    <a href="#">
+                        Hoa lan
+                    </a>
+                    <a href="#">
+                        Hoa cẩm tú cầu
+                    </a>
+                    <a href="#">
+                        Hoa tulip
+                    </a>
+                    <a href="#">
+                        Hoa hòe
+                    </a>
+                    <a href="#">
+                        Hoa anh đào
+                    </a>
+                    <a href="#">
+                        Hoa mắt
+                    </a>
+                    <a href="#">
+                        Hoa oải hương
+                    </a>
+                    <a href="#">
+                        Hoa sinh nhật
+                    </a>
+                    <a href="#">
+                        Hoa phan
+                    </a>
+                </div>
+            </div>
+            <div class="rightHeader">
+                <button class="btnOpenFormSearch">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="btnNotification">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="numberOfNotificate">0</span>
+                </button>
+                <button class="btnCart" routerLink="/cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="numberOfCart">{{length_cart}}</span>
+                </button>
+                <button class="btnProfileUser" routerLink="/profile-user/info">
+                    <img src="resource/img/hình 3x4.png" alt="">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

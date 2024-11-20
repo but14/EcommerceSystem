@@ -1,0 +1,72 @@
+<div class="orderHistory">
+    <div class="titleOrderHistory">
+        <h2>Lịch sử đơn hàng</h2>
+    </div>
+    <div class="listOrder">
+        <!-- Item -->
+        <ng-container *ngIf="list_order.length > 0 else elseBlock">
+            <div class="orderHistoryInfo" *ngFor="let order of list_order">
+                <div class="top">
+                    <div class="leftTop">
+                        <span> Mã Đơn Hàng  :</span>
+                        <span>{{order._id}}</span>
+                    </div>
+                </div>
+                <div class="top">
+                    <div class="leftTop">
+                        <span>Trạng thái đơn hàng  :</span>
+                        <span>{{order.order_status}}</span>
+                    </div>
+                </div>
+                <div class="top">
+                    <div class="leftTop">
+                        <span>Ngày đặt hàng :</span>
+                        <span>{{order.createdAt}}</span>
+                    </div>
+                </div>
+                <!-- Từng order trong đơn mua -->
+                <div class="productInfo" *ngFor="let detail of detail_order">
+                    <!-- từng order trong list order -->
+                        <div class="price">
+                            <a routerLink="/product-detail/{{detail.product_id}}"
+                              [queryParams]="{ idProduct : detail.product_id }">Mã:{{detail.product_id}}
+                            </a>
+                        </div>
+                        <div class="price">
+                            <span>Phân loại:{{detail.variant_id}}</span>
+                        </div>
+                        <div class="price">
+                            <span>Số lượng : {{detail.quantity}}</span>
+                        </div>
+                        <div class="price">
+                            <span>{{detail.unit_price | number : '1.0-0'}} đ</span>
+                        </div>
+                        <div class="price">
+                            <!-- <button type="button" class="btnRating" (click)="review_page(detail.product_id,detail.variant_id,order._id,product_details.sort)">Đánh Giá</button> -->
+                            <button type="button" class="btnRating"
+                                routerLink="/profile-user/order-history/review"
+                                [queryParams]="{ product_id : detail.product_id, variant_id: detail.variant_id, order_id: order._id }"
+                            >
+                                Đánh Giá
+                            </button>
+                        </div>
+                </div>
+                <router-outlet></router-outlet>
+                <div class="totalPriceInfo">
+                    <span>Thành tiền: <span style="color: #a61713; font-size: 22px; font-weight: 400;">{{ order.order_payment_cost | number : '1.0-0'}} đ</span></span>
+                </div>
+                <div class="bottom">
+                    <button class="btnRePurchase" disabled>Mua Lại</button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #elseBlock>
+            <div
+                style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"
+            >
+                <i className="fa-solid fa-spinner newFeedsLoad"></i>
+            </div>
+        </ng-template>
+
+    </div>
+</div>
